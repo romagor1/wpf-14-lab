@@ -22,29 +22,29 @@ namespace wpf_14_lab {
 			DrawRecursionStage(centerX, centerY, initialRadius, e.Graphics);
 		}
 
-		private void DrawRecursionStage(int x, int y, int radius, Graphics g)
-		{
-			if (IsRecursionDepthReached(radius))
-				return;
+			private void DrawRecursionStage(int x, int y, int radius, Graphics g)
+			{
+				if (IsRecursionDepthReached(radius))
+					return;
 
-			DrawCircle(x, y, radius, g);
-			double h;
+				DrawCircle(x, y, radius, g);
+				double h;
 
-			h = radius * 2 + Math.Cos(3.14 / 6) - 40;
-			float ang2 = (float)(radius + (3.14 * 6 * 2));
+				h = radius * 2 + Math.Cos(3.14 / 6) - 40;
+				float ang2 = (float)(radius + (3.14 * 6 * 2));
 
 
-			int newRadius = (int)(radius * factor);
+				int newRadius = (int)(radius * factor);
 
-			DrawRecursionStage((int)(x + h * Math.Cos(ang2)), (int)(y + h * Math.Sin(ang2)), newRadius, g);
-			DrawRecursionStage((int)(x - h * Math.Cos(ang2)), (int)(y - h * Math.Sin(ang2)), newRadius, g);
+				DrawRecursionStage((int)(x + h * Math.Cos(ang2)), (int)(y + h * Math.Sin(ang2)), newRadius, g);
+				DrawRecursionStage((int)(x - h * Math.Cos(ang2)), (int)(y - h * Math.Sin(ang2)), newRadius, g);
 
-			DrawRecursionStage(x, (int)(y + h), newRadius, g);
-			DrawRecursionStage(x, (int)(y - h), newRadius, g);
-			DrawRecursionStage((int)(x + h * Math.Cos(ang2)), (int)(y - h * Math.Sin(ang2)), newRadius, g);
-			DrawRecursionStage((int)(x - h * Math.Cos(ang2)), (int)(y + h * Math.Sin(ang2)), newRadius, g);
+				DrawRecursionStage(x, (int)(y + h), newRadius, g);
+				DrawRecursionStage(x, (int)(y - h), newRadius, g);
+				DrawRecursionStage((int)(x + h * Math.Cos(ang2)), (int)(y - h * Math.Sin(ang2)), newRadius, g);
+				DrawRecursionStage((int)(x - h * Math.Cos(ang2)), (int)(y + h * Math.Sin(ang2)), newRadius, g);
 
-		}
+			}
 
 		private void DrawCircle(int x, int y, int radius, Graphics g)
 		{
@@ -61,7 +61,12 @@ namespace wpf_14_lab {
 
 		private static bool IsRecursionDepthReached(int radius)
 		{
-  return radius < Math.Pow(factor, 3) * initialRadius;
+			return radius < Math.Pow(factor, 3) * initialRadius;
 		}
-	}
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+    }
 }
